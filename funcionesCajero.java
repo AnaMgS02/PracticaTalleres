@@ -1,8 +1,21 @@
 
-public class fucionesCajero {
+public class funcionesCajero {
     public int[] cuentas = { 1001, 1002, 1003, 1004, 1005 };
     public int[] saldo = { 0, 0, 0, 0, 0 };
-    String[] transacion = {};
+    public String[] transacion = { "", "", "", "", "", "", "", "" };
+
+    public boolean sesion(int cuenta) {
+        boolean inicio = false;
+        for (int i = 0; i <= cuentas.length; i++) {
+            if (cuenta == cuentas[i]) {
+                inicio = true;
+                break;
+            } else {
+                inicio = false;
+            }
+        }
+        return inicio;
+    }
 
     public int consultaSaldo(int cuenta) {
         int i = 0;
@@ -20,7 +33,7 @@ public class fucionesCajero {
         return saldo[j];
     }
 
-    public boolean retiro(int cuenta, int valor) {
+    public void retiro(int cuenta, int valor) {
         int i = 0;
         for (i = 0; i <= cuentas.length; i++) {
             if (cuenta == cuentas[i]) {
@@ -33,12 +46,11 @@ public class fucionesCajero {
                 break;
             }
         }
-        if (valor > saldo[j]) {
-            System.out.println("Saldo insuficiente");
-            return false;
-        } else {
+        if (valor < (saldo[j]) && valor < (saldo[j] + 500)) {
             System.out.println("Retiro realizado");
-            return true;
+            saldo[j] -= valor + 500;
+        } else {
+            System.out.println("Saldo insuficiente");
         }
     }
 
@@ -49,27 +61,30 @@ public class fucionesCajero {
                 break;
             }
         }
-        int j = 0;
-        for (j = 0; j <= saldo.length; j++) {
-            if (i == j) {
-                saldo[j] = saldo[j] + valor;
-                System.out.println("Consignación realizada");
-                break;
-            }
-        }
+        saldo[i] += valor;
+        System.out.println("Consignación realizada");
     }
 
-    public void transacion(String movimiento) {
+    public void movs(String movimiento) {
         int i = 0;
-        for (i = 0; i < transacion.length; i++) {
+        if (transacion.length == i) {
+            transacion[i] = movimiento;
+        } else {
+            for (i = 0; i < transacion.length; i++) {
+                if (transacion[i].equals("")) {
+                    transacion[i] = movimiento;
+                    break;
+                } else {
+                }
+            }
         }
-        transacion[i] = movimiento;
     }
 
     public void imprimirTransacion() {
         int i = 0;
         for (i = 0; i < transacion.length; i++) {
+            System.out.println(transacion[i]);
         }
-        System.out.println("Movimiento: " + transacion[i]);
+
     }
 }
