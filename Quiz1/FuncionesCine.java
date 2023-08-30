@@ -341,70 +341,49 @@ public class FuncionesCine {
         return nombre;// podriamos retornar un id de reserva
     }
 
-    public void mostrarReserva(int sala, String asiento) {
-        int i = 0;
+    public void mostrarReserva(int sala) {
         if (sala == 1) {
-            for (i = 0; i < S1A.length; i++) {
-                if (S1A[i].equals(asiento)) {
-                    System.out.println("Nombre: " + s1PersonasA[i]);
-                    System.out.println("Asiento: " + S1A[i]);
-                    System.out.println("Precio: " + s1PrecioA[i]);
-                    break;
+            System.out.println("Sala 1");
+            for (int i = 0; i < S1A.length; i++) {
+                if (S1A[i] == null) {
                 } else {
-                    continue;
+                    System.out.println(S1A[i] + ": Reservado por " + s1PersonasA[i]);
                 }
             }
-            for (i = 0; i < S1B.length; i++) {
-                if (S1B[i].equals(asiento)) {
-                    System.out.println("Nombre: " + s1PersonasB[i]);
-                    System.out.println("Asiento: " + S1B[i]);
-                    System.out.println("Precio: " + s1PrecioB[i]);
-                    break;
+            for (int i = 0; i < S1B.length; i++) {
+                if (S1B[i] == null) {
                 } else {
-                    continue;
+                    System.out.println(S1B[i] + ": Reservado por " + s1PersonasB[i]);
                 }
             }
-            for (i = 0; i < S1C.length; i++) {
-                if (S1C[i].equals(asiento)) {
-                    System.out.println("Nombre: " + s1PersonasC[i]);
-                    System.out.println("Asiento: " + S1C[i]);
-                    System.out.println("Precio: " + s1PrecioC[i]);
-                    break;
+            for (int i = 0; i < S1C.length; i++) {
+                if (S1C[i] == null) {
                 } else {
-                    continue;
+                    System.out.println(S1C[i] + ": Reservado por " + s1PersonasC[i]);
+                }
+            }
+        } else if (sala == 2) {
+            System.out.println("Sala 2");
+            for (int i = 0; i < S2A.length; i++) {
+                if (S2A[i] == null) {
+                } else {
+                    System.out.println(S2A[i] + ": Reservado por " + s2PersonasA[i]);
+                }
+            }
+            for (int i = 0; i < S2B.length; i++) {
+                if (S2B[i] == null) {
+                } else {
+                    System.out.println(S2B[i] + ": Reservado por " + s2PersonasB[i]);
+                }
+            }
+            for (int i = 0; i < S2C.length; i++) {
+                if (S2C[i] == null) {
+                } else {
+                    System.out.println(S2C[i] + ": Reservado por " + s2PersonasC[i]);
                 }
             }
         } else {
-            for (i = 0; i < S2A.length; i++) {
-                if (S2A[i].equals(asiento)) {
-                    System.out.println("Nombre: " + s2PersonasA[i]);
-                    System.out.println("Asiento: " + S2A[i]);
-                    System.out.println("Precio: " + s2PrecioA[i]);
-                    break;
-                } else {
-                    continue;
-                }
-            }
-            for (i = 0; i < S2B.length; i++) {
-                if (S2B[i].equals(asiento)) {
-                    System.out.println("Nombre: " + s2PersonasB[i]);
-                    System.out.println("Asiento: " + S2B[i]);
-                    System.out.println("Precio: " + s2PrecioB[i]);
-                    break;
-                } else {
-                    continue;
-                }
-            }
-            for (i = 0; i < S2C.length; i++) {
-                if (S2C[i].equals(asiento)) {
-                    System.out.println("Nombre: " + s2PersonasC[i]);
-                    System.out.println("Asiento: " + S2C[i]);
-                    System.out.println("Precio: " + s2PrecioC[i]);
-                    break;
-                } else {
-                    continue;
-                }
-            }
+            System.out.println("Sala no disponible");
         }
     }
 
