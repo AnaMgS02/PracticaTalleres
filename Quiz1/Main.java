@@ -31,18 +31,19 @@ public class Main {
                     }
                     break;
                 case 2:
-                    leer.nextLine();
+                    System.out.print("\033[H]\033[2J");
+                    System.out.flush();
                     System.out.println("Seleccione \n1: Sala 1\n2: Sala 2");
                     sala = leer.nextInt();
                     fc.mostrarSala(sala);
                     break;
                 case 3:
+                    System.out.print("\033[H]\033[2J");
+                    System.out.flush();
                     leer.nextLine();
                     System.out.println("Digite sala de reservada\n1: Sala 1\n2: Sala 2");
                     sala = leer.nextInt();
-                    System.out.println("Digite el asiento reservado por favor");
-                    asiento = leer.nextLine();
-                    fc.mostrarReserva(sala, asiento);
+                    fc.mostrarReserva(sala);
                     break;
                 case 4:
                     salir = false;
