@@ -6,12 +6,11 @@ public class Main {
     static FuncionesCine fc = new FuncionesCine();
     public static void main(String[] args) {
         Scanner leer = new Scanner(System.in);
-
         boolean salir = true;
         int opcion = 0;
         while (salir == true) {
-            String nombre;
-            int sala = 0, asiento = 0;
+            String nombre, asiento;
+            int sala = 0;
             System.out.println("¿Que quieres hacer?");
             System.out.println("1. Reservar asiento \n2. Mostrar ocupacion \n3. Consultar reserva");
             System.out.print("Opcion: ");
@@ -39,11 +38,11 @@ public class Main {
                     break;
                 case 3:
                     leer.nextLine();
-                    System.out.println("Digite su nombre por favor");
-                    nombre = leer.nextLine();
                     System.out.println("Digite sala de reservada\n1: Sala 1\n2: Sala 2");
                     sala = leer.nextInt();
-                    fc.mostrarReserva(nombre, sala);
+                    System.out.println("Digite el asiento reservado por favor");
+                    asiento = leer.nextLine();
+                    fc.mostrarReserva(sala, asiento);
                     break;
                 case 4:
                     salir = false;

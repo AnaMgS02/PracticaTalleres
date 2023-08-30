@@ -341,52 +341,73 @@ public class FuncionesCine {
         return nombre;// podriamos retornar un id de reserva
     }
 
-    public void mostrarReserva(String nombre, int sala) {
+    public void mostrarReserva(int sala, String asiento) {
         int i = 0;
         if (sala == 1) {
-            for (i = 0; i < s1PersonasA.length; i++) {
-                if (s1PersonasA[i].equals(nombre)) {
+            for (i = 0; i < S1A.length; i++) {
+                if (S1A[i].equals(asiento)) {
                     System.out.println("Nombre: " + s1PersonasA[i]);
                     System.out.println("Asiento: " + S1A[i]);
                     System.out.println("Precio: " + s1PrecioA[i]);
                     break;
-                } else if (s1PersonasB[i].equals(nombre)) {
+                } else {
+                    continue;
+                }
+            }
+            for (i = 0; i < S1B.length; i++) {
+                if (S1B[i].equals(asiento)) {
                     System.out.println("Nombre: " + s1PersonasB[i]);
                     System.out.println("Asiento: " + S1B[i]);
                     System.out.println("Precio: " + s1PrecioB[i]);
                     break;
-                } else if (s1PersonasC[i].equals(nombre)) {
+                } else {
+                    continue;
+                }
+            }
+            for (i = 0; i < S1C.length; i++) {
+                if (S1C[i].equals(asiento)) {
                     System.out.println("Nombre: " + s1PersonasC[i]);
                     System.out.println("Asiento: " + S1C[i]);
                     System.out.println("Precio: " + s1PrecioC[i]);
                     break;
                 } else {
-                    System.out.println("No tiene reserva");
+                    continue;
                 }
             }
         } else {
-            for (i = 0; i < s2PersonasA.length; i++) {
-                if (s2PersonasA[i].equals(nombre)) {
+            for (i = 0; i < S2A.length; i++) {
+                if (S2A[i].equals(asiento)) {
                     System.out.println("Nombre: " + s2PersonasA[i]);
                     System.out.println("Asiento: " + S2A[i]);
                     System.out.println("Precio: " + s2PrecioA[i]);
                     break;
-                } else if (s2PersonasB[i].equals(nombre)) {
+                } else {
+                    continue;
+                }
+            }
+            for (i = 0; i < S2B.length; i++) {
+                if (S2B[i].equals(asiento)) {
                     System.out.println("Nombre: " + s2PersonasB[i]);
                     System.out.println("Asiento: " + S2B[i]);
                     System.out.println("Precio: " + s2PrecioB[i]);
                     break;
-                } else if (s2PersonasC[i].equals(nombre)) {
+                } else {
+                    continue;
+                }
+            }
+            for (i = 0; i < S2C.length; i++) {
+                if (S2C[i].equals(asiento)) {
                     System.out.println("Nombre: " + s2PersonasC[i]);
                     System.out.println("Asiento: " + S2C[i]);
                     System.out.println("Precio: " + s2PrecioC[i]);
                     break;
                 } else {
-                    System.out.println("No tiene reserva");
+                    continue;
                 }
             }
         }
     }
+
     public void mostrarSala(int sala) {
         if (sala == 1) {
             System.out.println("Sala 1");
