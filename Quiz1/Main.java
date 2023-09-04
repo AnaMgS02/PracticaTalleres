@@ -6,6 +6,7 @@ public class Main {
     static FuncionesCine fc = new FuncionesCine();
     public static void main(String[] args) {
         Scanner leer = new Scanner(System.in);
+        System.out.println("Equipo: \nAna Maria Gomez Soto\nJose Manuel Correa Gomez");
         boolean salir = true;
         int opcion = 0;
         while (salir == true) {

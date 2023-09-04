@@ -8,20 +8,27 @@ public class mainVector {
         funcionesAvionV funcion = new funcionesAvionV();
         int opcion = 0;
         do {
-            System.out.println("Ingrese su nombre por favor");
-            String nombre = sc.nextLine();
+            String nombre;
+            int clase;
             System.out.println(
                     "Menu\n1. Comprar Tiquete\n2. Mostrar Ocupacion del avion\n3. Mostrar valor a pagar por asiento\n4. Salir");
             int opcion1 = sc.nextInt();
             switch (opcion1) {
                 case 1:
+                    System.out.println("Ingrese su nombre por favor");
+                    nombre = sc.nextLine();
+                    sc.nextLine();
                     System.out.println("Seleccione la clase\n1 para primera clase\n2 para clase turista");
-                    int clase = sc.nextInt();
+                    clase = sc.nextInt();
                     funcion.comprarBoleto(nombre, clase);
                     break;
                 case 2:
                     System.out.println("_______________________");
                     funcion.asientosVacios();
+                    System.out.println("_______________________");
+                    funcion.mostrarOcupacion(1);
+                    System.out.println("_______________________");
+                    funcion.mostrarOcupacion(2);
                     break;
                 case 3:
                     System.out.println("Tarifas");
