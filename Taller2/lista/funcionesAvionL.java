@@ -1,29 +1,53 @@
 package Taller2.lista;
-public class funcionesAvionL{
-    public boolean asientosVacios(nodo head) {
+
+import java.util.Scanner;
+
+public class funcionesAvionL {
+    Scanner sc = new Scanner(System.in);
+    public nodo head = null;
+
+    public void addNuevo(String nombre, String clase, double precio) {
+        int i = 0;
+        nodo nuevo;
+        if (head == null) {
+            nuevo = new nodo(nombre, clase, i, precio);
+            head = nuevo;
+        } else {
+            nodo pointer = head;
+            i=pointer.numA+1;
+            while (pointer.next != null) {
+                pointer = pointer.next;
+                i++;
+            }
+            nuevo = new nodo(nombre, clase, i, precio);
+            pointer.next = nuevo;
+        }
+    }
+
+    public boolean asientosVacios() {
         boolean estado = false;
-        int contF=0, contT=0;
-        if (head==null){
-            estado=false;
-        }else{
-            nodo pointer=head;
-            while(pointer!=null){
+        int contF = 0, contT = 0;
+        if (head == null) {
+            estado = true;
+            System.out.println(
+                    "El avión está vacío, asisentos\n|Primera clase: " + (5 - contF) + "\n|Turista: " + (8 - contT));
+        } else {
+            nodo pointer = head;
+            while (pointer != null) {
                 if (pointer.clase.equals("T")) {
                     contT++;
-                }else if(pointer.clase.equals("F")){
+                } else if (pointer.clase.equals("F")) {
                     contF++;
                 }
-                pointer=pointer.next;
+                pointer = pointer.next;
             }
+            System.out.println("|Asisentos disponibles\n|Primera clase: " + (5 - contF) + "\n|Turista: " + (8 - contT));
         }
-        if(contF<5){
-            estado=true;
-        }else if(contT<8){
-            estado =true;
-        }else{
-            estado=false;
+        if (contF < 5 || contT < 8) {
+            estado = true;
+        } else {
+            estado = false;
         }
-        System.out.println("|Asisentos disponibles\n|Primera clase: " +(contF-5)+ "\n|Turista: " + (contT-8));
         return estado;
     }
 
@@ -34,10 +58,10 @@ public class funcionesAvionL{
         double administracion = precioBase * 0.07;
         double seguro = precioBase * 0.10;
         double vClase = 0;
-        if (clase == 1) {
+        if (clase==1) {
             vClase = (precioBase + combustible + administracion + seguro) * 0.65;
             precioT = (precioBase + combustible + administracion + seguro + vClase);
-        } else if (clase == 2) {
+        } else if (clase==2) {
             precioT = (precioBase + combustible + administracion + seguro);
         } else {
             System.out.println("Clase invalida");
@@ -49,44 +73,23 @@ public class funcionesAvionL{
          * System.out.println("Administración 7%: " + administracion);
          * System.out.println("Seguro 10%: " + seguro);
          * System.out.println("Asiento en clase: " +clase+": "+ vClase);
-         * System.out.println("Valor Total: " + precioT);*/
+         * System.out.println("Valor Total: " + precioT);
+         */
         return precioT;
     }
 
-    public void comprarBoleto(String nombre, int clase) {
+    public void comprarBoleto(int clase, String nombre) {
+        double precioT= 0;
+        String classe="";
         if (asientosVacios()) {
-            if (clase == 1) {
-                int i = 0;
-                for (i = 0; i < 5; i++) {
-                    if (asientos[i] == null && pasajeros[i] == null) {
-                        asientos[i] = "F" + i;
-                        pasajeros[i] = nombre;
-                        System.out.println("------------------");
-                        System.out.println("Asiento asignado");
-                        System.out.println("------------------");
-                        precioBoleto[i] = precio(clase);
-                        break;
-                    } else {
-                        continue;
-                    }
-                }
-            } else {
-                int i = 0;
-                for (i = 5; i < 13; i++) {
-                    if (asientos[i] == null && pasajeros[i] == null) {
-                        asientos[i] = "T" + i;
-                        pasajeros[i] = nombre;
-                        System.out.println("------------------");
-                        System.out.println("Asiento asignado");
-                        System.out.println("------------------");
-                        precioBoleto[i] = (precio(clase));
-                        break;
-                    } else {
-                        continue;
-                    }
-                }
+            precioT=precio(clase);
+            if(clase==1){
+                classe="F";
+            }else{
+                classe="T";
             }
-            VerTiquete(nombre, clase);
+            addNuevo(nombre, classe, precioT);
+            VerTiquete(nombre);
         } else {
             System.out.println("------------------");
             System.out.println("El avión está lleno");
@@ -94,60 +97,34 @@ public class funcionesAvionL{
         }
     }
 
-    public void VerTiquete(String nombre, int clase) {
-        if (clase == 1) {
-            for (int i = 0; i < pasajeros.length; i++) {
-                if (pasajeros[i].equals(nombre)) {
+    public void VerTiquete(String nombre) {
+        if (head == null) {
+            System.out.println("No se han comprado tiquetes para este vuelo");
+        } else {
+            nodo pointer = head;
+            while (pointer != null) {
+                if (pointer.nombPasajero.equals(nombre)) {
                     System.out.println("\n###############################");
                     System.out.println("|Informacion de tiquete");
-                    System.out.println("|Nombre: " + pasajeros[i]);
-                    System.out.println("|Asiento: " + asientos[i]);
-                    System.out.println("|Precio: " + precioBoleto[i]);
+                    System.out.println("|Nombre: " + pointer.nombPasajero);
+                    System.out.println("|Asiento: " + pointer.clase+pointer.numA);
+                    System.out.println("|Precio: " + pointer.precio);
                     System.out.println("###############################");
                     break;
                 } else {
-                }
-            }
-        } else {
-            for (int i = 5; i < pasajeros.length; i++) {
-                if (pasajeros[i].equals(nombre)) {
-                    System.out.println("\n###############################");
-                    System.out.println("|Informacion de tiquete");
-                    System.out.println("|Nombre: " + pasajeros[i]);
-                    System.out.println("|Asiento: " + asientos[i]);
-                    System.out.println("|Precio: " + precioBoleto[i]);
-                    System.out.println("\n###############################");
-                    break;
-                } else {
+                    pointer = pointer.next;
+                    continue;
                 }
             }
         }
     }
 
-    public void mostrarOcupacion(int clase) {
-        if (clase == 1) {
-            System.out.println("Primera clase");
-            for (int i = 0; i < 5; i++) {
-                if (asientos[i] == null) {
-                    System.out.println("||F" + i + ": Disponible");
-                } else {
-                    System.out.println("||" + asientos[i] + ": Ocupado por " + pasajeros[i]);
-                }
-            }
-        } else if (clase == 2) {
-            System.out.println("Clase turista");
-            for (int i = 5; i < 13; i++) {
-                if (asientos[i] == null) {
-                    System.out.println("||T" + i + ": Disponible");
-                } else {
-                    System.out.println("||" + asientos[i] + ": Ocupado por " + pasajeros[i]);
-                }
-            }
-        } else {
-            System.out.println("La clase ingresada no existe");
+    public void mostrarOcupacion() {
+        nodo pointer = head;
+        while (pointer != null) {
+            System.out.println(pointer.clase+pointer.numA+ ": Ocupado por: " + pointer.nombPasajero);
+            pointer = pointer.next;
         }
+        asientosVacios();
     }
-
-    }
-
 }
