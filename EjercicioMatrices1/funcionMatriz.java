@@ -92,14 +92,14 @@ public class funcionMatriz {
     }
 
     public void mostrarMatriz() {
-        for (int i = 0; i < 4; i++) {
-            for (int j = 0; j < 4; j++) {
+        for (int i = 0; i < matriz.length; i++) {
+            for (int j = 0; j < matriz[0].length; j++) {
                 System.out.print(" " + matriz[i][j] + " ");
             }
             System.out.println();
         }
     }
-
+    //PRODUCTO DE MATRICES
     public int[][] A = { { 1, 2 }, { 3, 4 } };
     public int[][] B = { { 3, -2 }, { 1, 5 } };
     public int[][] C = { { 4, -1 }, { -2, 3 } };
@@ -107,50 +107,67 @@ public class funcionMatriz {
     public int[][] E = { { 1, 2, 0 }, { 3, 2, -1 }, { 5, 1, -2 } };
     public int[][] F = { { 3, 4, 0 }, { 1, 0, -2 }, { -1, 2, 1 } };
 
-    public void producto(int matriz1[][], int matriz2[][]) {
-        int[][] matrizR = new int[matriz1.length][matriz[0].length];
+    public int[][] producto(int matriz1[][], int matriz2[][]) {
+        int[][] matriz = new int[matriz1.length][matriz2[0].length];
+        for (int i = 0; i < matriz1.length; i++) {// Debo recorrer 2 veces la misma fila o columna
+            for (int j = 0; j < matriz2[0].length; j++) {
+                for (int k = 0; k < matriz.length; k++) {
+                    matriz[i][j] += ((matriz1[i][k]) * (matriz2[k][j]));
 
-            for (int i = 0; i < matrizR.length; i++) {//DEbo recorrer 2 veces la misma fila o columna
-                int suma = 0;
-                for (int j = 0; j < matriz1.length; j++) {
-                    for (int k = 0; k < matriz2[0].length; k++) {
-                        suma += ((matriz1[j][k]) * (matriz2[k][j]));
-                    }
-                    matrizR[i][i] = suma;
-                    System.out.print(" "+matrizR[i][i]);
                 }
-                System.out.println();
             }
+        }
+        return matriz;
+    }
+    public void mostrar(int[][] matriz){
+        for (int i = 0; i < matriz.length; i++) {
+            for (int j = 0; j < matriz[0].length; j++) {
+                System.out.print(" " + matriz[i][j] + " ");
+            }
+            System.out.println();
+        }
+    }
+    int[][] G = { { 2, 4 }, { -3, 5 } };
+    int[][] H = { { -1, -2 }, { 3, -3 } };
+    public int[][] restaMatrices(int[][] matriz1, int[][]matriz2) {
+        int[][] matriz = new int[matriz1.length][];
+        for (int i = 0; i < 2; i++) {
+            for (int j = 0; j < 4; j++) {
+                matriz[i][j] = matriz1[i][j] - matriz2[i][j];
+            }
+        }
+        return matriz;
     }
 
     public void eleccion() {
-        System.out.println("Elije 2 matrices para multiplicar, (Elige dentro de las opciones)");
-        System.out.println("1: AB\n2: BA\n3: CD\n4: DC\n5: EF\n6: FE");
+        System.out.println("Elije la operacion a realizar (Escribe el numero que corresponda)");
+        System.out.println("1: AB\n2: BA\n3: CD\n4: DC\n5: EF\n6: FE\n7: GH-HG");
         int eleccion = sc.nextInt();
         switch (eleccion) {
             case 1:
-                producto(A, B);
+                mostrar(producto(A, B));
                 break;
             case 2:
-                producto(B, A);
+                mostrar(producto(B, A));
                 break;
             case 3:
-                producto(C, D);
+                mostrar(producto(C, D));
                 break;
             case 4:
-                producto(D, C);
+                mostrar(producto(D, C));
                 break;
             case 5:
-                producto(E, F);
+                mostrar(producto(E, F));
                 break;
             case 6:
-                producto(F, E);
+                mostrar(producto(F, E));
+                break;
+            case 7:
+                mostrar((restaMatrices((producto(G,H)), (producto(H,G)))));
                 break;
             default:
                 break;
         }
 
     }
-    int[][] matrizG = { { 2, 4 }, { -3, 5 } };
-    int[][] matrizH = { { -1, -2 }, { 3, -3 } };
 }
