@@ -64,6 +64,9 @@ public class main {
                     System.out.println("Desea volver al menu?");
                     volverB=sc.nextInt();
                 }
+                case 'C':
+                fc.eleccion();
+                break;
             default:
                 break;
         }

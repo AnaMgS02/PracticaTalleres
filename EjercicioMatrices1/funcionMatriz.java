@@ -72,9 +72,9 @@ public class funcionMatriz {
 
     public int sumarDiagonalS() {
         int suma = 0;
-        int j=3;
+        int j = 3;
         for (int i = 0; i < 4; i++) {
-            suma =suma +matriz[i][j];
+            suma = suma + matriz[i][j];
             j--;
         }
         return suma;
@@ -100,15 +100,56 @@ public class funcionMatriz {
         }
     }
 
-    int[][] matrizA = { { 1, 2 }, { 3, 4 } };
-    int[][] matrizB = { { 3, -2 }, { 1, 5 } };
-    int[][] matrizC = { { 4, -1 }, { -2, 3 } };
-    int[][] matrizD = { { -2, 5 }, { 6, -3 } };
-    int[][] matrizE = { { 1, 2, 0 }, { 3, 2, -1 }, { 5, 1, -2 } };
-    int[][] matrizF = { { 3, 4, 0 }, { 1, 0, -2 }, { -1, 2, 1 } };
-    public void producto(){
+    public int[][] A = { { 1, 2 }, { 3, 4 } };
+    public int[][] B = { { 3, -2 }, { 1, 5 } };
+    public int[][] C = { { 4, -1 }, { -2, 3 } };
+    public int[][] D = { { -2, 5 }, { 6, -3 } };
+    public int[][] E = { { 1, 2, 0 }, { 3, 2, -1 }, { 5, 1, -2 } };
+    public int[][] F = { { 3, 4, 0 }, { 1, 0, -2 }, { -1, 2, 1 } };
 
-        
+    public void producto(int matriz1[][], int matriz2[][]) {
+        int[][] matrizR = new int[matriz1.length][matriz[0].length];
+
+            for (int i = 0; i < matrizR.length; i++) {//DEbo recorrer 2 veces la misma fila o columna
+                int suma = 0;
+                for (int j = 0; j < matriz1.length; j++) {
+                    for (int k = 0; k < matriz2[0].length; k++) {
+                        suma += ((matriz1[j][k]) * (matriz2[k][j]));
+                    }
+                    matrizR[i][i] = suma;
+                    System.out.print(" "+matrizR[i][i]);
+                }
+                System.out.println();
+            }
+    }
+
+    public void eleccion() {
+        System.out.println("Elije 2 matrices para multiplicar, (Elige dentro de las opciones)");
+        System.out.println("1: AB\n2: BA\n3: CD\n4: DC\n5: EF\n6: FE");
+        int eleccion = sc.nextInt();
+        switch (eleccion) {
+            case 1:
+                producto(A, B);
+                break;
+            case 2:
+                producto(B, A);
+                break;
+            case 3:
+                producto(C, D);
+                break;
+            case 4:
+                producto(D, C);
+                break;
+            case 5:
+                producto(E, F);
+                break;
+            case 6:
+                producto(F, E);
+                break;
+            default:
+                break;
+        }
+
     }
     int[][] matrizG = { { 2, 4 }, { -3, 5 } };
     int[][] matrizH = { { -1, -2 }, { 3, -3 } };
