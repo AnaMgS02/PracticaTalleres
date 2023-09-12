@@ -13,21 +13,17 @@ public class funcionMatriz {
     int[][] matrizR = new int[2][4];
 
     public void sumaMatrices() {
+        System.out.println("Matriz 1");
+        mostrar(matriz1);
+        System.out.println("Matriz 2");
+        mostrar(matriz2);
         for (int i = 0; i < 2; i++) {
             for (int j = 0; j < 4; j++) {
                 matrizR[i][j] = matriz1[i][j] + matriz2[i][j];
             }
-            System.out.println();
         }
-    }
-
-    public void mostrarMatrizR() {
-        for (int i = 0; i < 2; i++) {
-            for (int j = 0; j < 4; j++) {
-                System.out.print(" " + matrizR[i][j]);
-            }
-            System.out.println();
-        }
+        System.out.println("Resultado Matriz 1 + Matriz 2");
+        mostrar(matrizR);
     }
 
     public void addNumero() {
@@ -149,21 +145,51 @@ public class funcionMatriz {
         int eleccion = sc.nextInt();
         switch (eleccion) {
             case 1:
+                System.out.println("Matriz A");
+                mostrar(A);
+                System.out.println("Matriz B");
+                mostrar(B);
+                System.out.println("Resultado A*B");
                 mostrar(producto(A, B));
                 break;
             case 2:
+                System.out.println("Matriz B");
+                mostrar(B);
+                System.out.println("Matriz A");
+                mostrar(A);
+                System.out.println("Resultado B*A");
                 mostrar(producto(B, A));
                 break;
             case 3:
+                System.out.println("Matriz C");
+                mostrar(C);
+                System.out.println("Matriz D");
+                mostrar(D);
+                System.out.println("Resultado C*D");
                 mostrar(producto(C, D));
                 break;
             case 4:
+                System.out.println("Matriz D");
+                mostrar(D);
+                System.out.println("Matriz C");
+                mostrar(C);
+                System.out.println("Resultado D*C");
                 mostrar(producto(D, C));
                 break;
             case 5:
+                System.out.println("Matriz E");
+                mostrar(E);
+                System.out.println("Matriz F");
+                mostrar(F);
+                System.out.println("Resultado E*F");
                 mostrar(producto(E, F));
                 break;
             case 6:
+                System.out.println("Matriz F");
+                mostrar(F);
+                System.out.println("Matriz E");
+                mostrar(E);
+                System.out.println("Resultado F*E");
                 mostrar(producto(F, E));
                 break;
             case 7:
