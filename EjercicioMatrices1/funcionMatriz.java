@@ -99,7 +99,8 @@ public class funcionMatriz {
             System.out.println();
         }
     }
-    //PRODUCTO DE MATRICES
+
+    // PRODUCTO DE MATRICES
     public int[][] A = { { 1, 2 }, { 3, 4 } };
     public int[][] B = { { 3, -2 }, { 1, 5 } };
     public int[][] C = { { 4, -1 }, { -2, 3 } };
@@ -119,7 +120,8 @@ public class funcionMatriz {
         }
         return matriz;
     }
-    public void mostrar(int[][] matriz){
+
+    public void mostrar(int[][] matriz) {
         for (int i = 0; i < matriz.length; i++) {
             for (int j = 0; j < matriz[0].length; j++) {
                 System.out.print(" " + matriz[i][j] + " ");
@@ -127,12 +129,14 @@ public class funcionMatriz {
             System.out.println();
         }
     }
+
     int[][] G = { { 2, 4 }, { -3, 5 } };
     int[][] H = { { -1, -2 }, { 3, -3 } };
-    public int[][] restaMatrices(int[][] matriz1, int[][]matriz2) {
-        int[][] matriz = new int[matriz1.length][];
-        for (int i = 0; i < 2; i++) {
-            for (int j = 0; j < 4; j++) {
+
+    public int[][] restaMatrices(int[][] matriz1, int[][] matriz2) {
+        int[][] matriz = new int[matriz1.length][matriz1[0].length];
+        for (int i = 0; i < matriz.length; i++) {
+            for (int j = 0; j < matriz[0].length; j++) {
                 matriz[i][j] = matriz1[i][j] - matriz2[i][j];
             }
         }
@@ -163,7 +167,12 @@ public class funcionMatriz {
                 mostrar(producto(F, E));
                 break;
             case 7:
-                mostrar((restaMatrices((producto(G,H)), (producto(H,G)))));
+                System.out.println("Matriz G");
+                mostrar(G);
+                System.out.println("Matriz H");
+                mostrar(H);
+                System.out.println("Resultado GH-HG");
+                mostrar((restaMatrices((producto(G, H)), (producto(H, G)))));
                 break;
             default:
                 break;
