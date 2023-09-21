@@ -2,24 +2,24 @@ package Taller2.lista;
 
 import java.util.Scanner;
 
-public class funcionesAvionL {
+public class FuncionesAvionL {
     Scanner sc = new Scanner(System.in);
-    public nodo head = null;
+    public Nodo head = null;
 
     public void addNuevo(String nombre, String clase, double precio) {
         int i = 0;
-        nodo nuevo;
+        Nodo nuevo;
         if (head == null) {
-            nuevo = new nodo(nombre, clase, i, precio);
+            nuevo = new Nodo(nombre, clase, i, precio);
             head = nuevo;
         } else {
-            nodo pointer = head;
+            Nodo pointer = head;
             i=pointer.numA+1;
             while (pointer.next != null) {
                 pointer = pointer.next;
                 i++;
             }
-            nuevo = new nodo(nombre, clase, i, precio);
+            nuevo = new Nodo(nombre, clase, i, precio);
             pointer.next = nuevo;
         }
     }
@@ -32,7 +32,7 @@ public class funcionesAvionL {
             System.out.println(
                     "El avión está vacío, asisentos\n|Primera clase: " + (5 - contF) + "\n|Turista: " + (8 - contT));
         } else {
-            nodo pointer = head;
+            Nodo pointer = head;
             while (pointer != null) {
                 if (pointer.clase.equals("T")) {
                     contT++;
@@ -101,7 +101,7 @@ public class funcionesAvionL {
         if (head == null) {
             System.out.println("No se han comprado tiquetes para este vuelo");
         } else {
-            nodo pointer = head;
+            Nodo pointer = head;
             while (pointer != null) {
                 if (pointer.nombPasajero.equals(nombre)) {
                     System.out.println("\n###############################");
@@ -120,7 +120,7 @@ public class funcionesAvionL {
     }
 
     public void mostrarOcupacion() {
-        nodo pointer = head;
+        Nodo pointer = head;
         while (pointer != null) {
             System.out.println(pointer.clase+pointer.numA+ ": Ocupado por: " + pointer.nombPasajero);
             pointer = pointer.next;

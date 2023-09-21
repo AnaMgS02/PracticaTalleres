@@ -2,9 +2,9 @@ package EjercicioMatrices1;
 
 import java.util.Scanner;
 
-import Taller2.vector.mainVector;
+import Taller2.vector.MainVector;
 
-public class funcionMatriz {
+public class FuncionMatriz {
     // matriz.lenght # de filas, matriz.lenght[0] # de columnas
     Scanner sc = new Scanner(System.in);
     int[][] matriz1 = { { 3, 6, 9, 4 }, { 2, 5, 7, 1 } };

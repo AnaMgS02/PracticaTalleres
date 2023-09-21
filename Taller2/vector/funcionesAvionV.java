@@ -2,7 +2,7 @@ package Taller2.vector;
 
 import java.util.Scanner;
 
-public class funcionesAvionV {
+public class FuncionesAvionV {
     Scanner sc = new Scanner(System.in);
     public String[] Tiquete = new String[13];
     public String[] pasajeros = new String[13];

@@ -1,6 +1,6 @@
 package BusquedaVectores;
 
-public class funcionesCajero {
+public class FuncionesCajero {
     public int[] cuentas = { 1001, 1002, 1003, 1004, 1005 };
     public int[] saldo = { 0, 0, 0, 0, 0 };
     public String[] transacion = { "", "", "", "", "", "", "", "" };

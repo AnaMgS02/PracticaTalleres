@@ -2,10 +2,10 @@ package Taller2.lista;
 
 import java.util.Scanner;
 
-public class mainLista {
+public class MainLista {
     public static void main(String args[]) {
         Scanner sc = new Scanner(System.in);
-        funcionesAvionL funcion = new funcionesAvionL();
+        FuncionesAvionL funcion = new FuncionesAvionL();
         int opcion = 0;
         do {
             String nombre;

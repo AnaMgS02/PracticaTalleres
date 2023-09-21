@@ -2,10 +2,10 @@ package Taller2.vector;
 
 import java.util.Scanner;
 
-public class mainVector {
+public class MainVector {
     public static void main(String args[]) {
         Scanner sc = new Scanner(System.in);
-        funcionesAvionV funcion = new funcionesAvionV();
+        FuncionesAvionV funcion = new FuncionesAvionV();
         int opcion = 0;
         do {
             String nombre;

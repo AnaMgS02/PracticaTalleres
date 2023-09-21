@@ -1,10 +1,10 @@
 package BusquedaVectores;
 import java.util.Scanner;
 
-public class main {
+public class Main {
     public static void main(String args[]) {
         Scanner sc = new Scanner(System.in);
-        funcionesCajero funcion = new funcionesCajero();
+        FuncionesCajero funcion = new FuncionesCajero();
         int eleccion = 0;
         int movimiento = 0;
         do {

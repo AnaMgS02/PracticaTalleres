@@ -4,7 +4,7 @@ import java.util.Scanner;
 
 import Taller2.lista.nodo;
 
-public class main {
+public class Main {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
         funcionesBus fc = new funcionesBus();

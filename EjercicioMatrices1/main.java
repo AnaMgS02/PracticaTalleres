@@ -4,7 +4,7 @@ import java.util.Scanner;
 
 public class main {
     public static void main(String[] args) {
-        funcionMatriz fc = new funcionMatriz();
+        FuncionMatriz fc = new FuncionMatriz();
         Scanner sc = new Scanner(System.in);
         int volverT = 1;
         while (volverT == 1) {
