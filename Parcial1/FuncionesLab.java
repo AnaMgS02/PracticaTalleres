@@ -12,7 +12,7 @@ public class FuncionesLab {
         for (int i = 0; i < matLaberinto.length; i++) {
             for (int j = 0; j < matLaberinto[0].length; j++) {
                 System.out.print("Dato: ");
-                int dato = sc.nextInt();
+                int dato = sc.neixtInt();
                 if (dato != 0 && dato != 1) {
                     System.out.println("Recuerda que sólo puedes ingresar 0 ó 1, intenta nuevamente");
                     System.out.print("Dato: ");
@@ -81,61 +81,58 @@ public class FuncionesLab {
      */
 
     public void buscarCamino() {
-        int x = 0, y = 0, k = 0;
+        int i = 0, j = 0, k = 0;
         String camino = "";
-        while (x != 4 || y != 4) {
-            camino += "(" + x + ", " + y + ")";
-            matLaberinto[x][y] = 2; // Marcar la casilla como visitada
-            // Mover hacia abajo si es posible
-            if (x < 4 && matLaberinto[x + 1][y] == 1) {
-                x++;
+        while (i != 4 || j != 4) {
+            camino += "(" + i + ", " + j + ")";
+            matLaberinto[i][j] = 2;
+            if (i < 4 && matLaberinto[i + 1][j] == 1) {
+                i++;
                 continue;
             }
-            // Mover hacia la derecha si es posible
-            if (y < 4 && matLaberinto[x][y + 1] == 1) {
-                y++;
+            if (j < 4 && matLaberinto[i][j + 1] == 1) {
+                j++;
                 continue;
             }
-            // Si no es posible avanzar, retroceder
-            if (x > 0 && matLaberinto[x - 1][y] == 1) {
-                x--;
+            if (i > 0 && matLaberinto[i - 1][j] == 1) {
+                i--;
                 continue;
             }
-            if (y > 0 && matLaberinto[x][y - 1] == 1) {
-                y--;
+            if (j > 0 && matLaberinto[i][j - 1] == 1) {
+                j--;
                 continue;
             }
         }
-        camino += "(" + x + ", " + y + ")";
+        camino += "(" + i + ", " + j + ")";
         caminos[k] = camino;
         k++;
-        x = 0;
-        y = 0;
+        i = 0;
+        j = 0;
         camino = "";
-        while (x != 4 || y != 4) {
-            camino += "(" + x + ", " + y + ")";
-            matLaberinto[x][y] = 2; // Marcar la casilla como visitada
+        while (i != 4 || j != 4) {
+            camino += "(" + i + ", " + j + ")";
+            matLaberinto[i][j] = 2; // Marcar la casilla como visitada
             // Mover hacia la derecha si es posible
-            if (y < 4 && matLaberinto[x][y + 1] == 1) {
-                y++;
+            if (j < 4 && matLaberinto[i][j + 1] == 1) {
+                j++;
                 continue;
             }
             // Mover hacia abajo si es posible
-            if (x < 4 && matLaberinto[x + 1][y] == 1) {
-                x++;
+            if (i < 4 && matLaberinto[i + 1][j] == 1) {
+                i++;
                 continue;
             }
             // Si no es posible avanzar, retroceder
-            if (x > 0 && matLaberinto[x - 1][y] == 1) {
-                x--;
+            if (i > 0 && matLaberinto[i - 1][j] == 1) {
+                i--;
                 continue;
             }
-            if (y > 0 && matLaberinto[x][y - 1] == 1) {
-                y--;
+            if (j > 0 && matLaberinto[i][j - 1] == 1) {
+                j--;
                 continue;
             }
         }
-        camino += "(" + x + ", " + y + ")";
+        camino += "(" + i + ", " + j + ")";
         caminos[k] = camino;
         k++;
         for (k = 0; k < 2; k++) {
