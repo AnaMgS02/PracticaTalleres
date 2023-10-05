@@ -2,17 +2,6 @@ package Parcial1;
 import java.util.Scanner;
 public class Main {
     public static void main(String[] args) {
-
-
-        int[][] matLaberinto = {
-            {1, 0, 0, 1, 0},
-            {1, 1, 0, 0, 0},
-            {0, 1, 1, 0, 0},
-            {1, 0, 1, 1, 0},
-            {1, 0, 0, 1, 1}
-        };
-    
-
         Scanner sc=new Scanner(System.in);
         FuncionesLab fc=new FuncionesLab();
         int volver=1;
