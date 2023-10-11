@@ -12,7 +12,7 @@ public class FuncionesLab {
         for (int i = 0; i < matLaberinto.length; i++) {
             for (int j = 0; j < matLaberinto[0].length; j++) {
                 System.out.print("Dato: ");
-                int dato = sc.neixtInt();
+                int dato = sc.nextInt();
                 if (dato != 0 && dato != 1) {
                     System.out.println("Recuerda que sólo puedes ingresar 0 ó 1, intenta nuevamente");
                     System.out.print("Dato: ");
@@ -34,109 +34,89 @@ public class FuncionesLab {
         }
     }
 
-    /*
-     * public void buscarCamino1() {
-     * String camino = "";
-     * int i = 0, j = 0, k = 0;
-     * if (matLaberinto[0][0] == 1 && matLaberinto[4][4] == 1) {
-     * if ((matLaberinto[1][0] == 1 || matLaberinto[0][1] == 1)
-     * && (matLaberinto[3][4] == 1 || matLaberinto[4][3] == 1)) {
-     * for (k = 0; k < caminos.length; k++) {
-     * for (i = 0; i < matLaberinto.length; i++) {
-     * for (j = 0; j < matLaberinto[0].length; j++) {
-     * if (matLaberinto[i][j] == 1) {
-     * matLaberinto[i][j] = 2; // Marcar la casilla como visitada
-     * if (i < 4 && matLaberinto[i + 1][j] == 1) {
-     * camino += "(" + i + "," + j + ") ";
-     * break;
-     * }
-     * if (j < 4 && matLaberinto[i][j + 1] == 1) {
-     * camino += "(" + i + "," + j + ") ";
-     * continue;
-     * }
-     * if (i > 0 && matLaberinto[i - 1][j] == 1) {
-     * camino += "(" + i + "," + j + ") ";
-     * break;
-     * }
-     * if (j > 0 && matLaberinto[i][j - 1] == 1) {
-     * camino += "(" + i + "," + j + ") ";
-     * continue;
-     * }
-     * }
-     * }
-     * }
-     * camino += "(" + i + "," + j + ") ";
-     * caminos[k] = camino;
-     * }
-     * 
-     * System.out.println("La matriz tiene salida");
-     * System.out.println("Camino: " + caminos[k]);
-     * } else {
-     * }
-     * } else {
-     * System.out.println("Esta matriz no tiene salida");
-     * }
-     * 
-     * }
-     */
+    public void marcarCamino() {
+        for (int i = 0; i < matLaberinto.length; i++) {
+            for (int j = 0; j < matLaberinto[0].length; j++) {
+                if (matLaberinto[i][j] == 1) {
+                    if (i < 4 && matLaberinto[i + 1][j] == 1) {
+                        matLaberinto[i][j] = 2;
+                    }
+                    if (j < 4 && matLaberinto[i][j + 1] == 1) {
+                        matLaberinto[i][j] = 2;
+                    }
+                    if (i > 0 && matLaberinto[i - 1][j] == 1) {
+                        matLaberinto[i][j] = 2;
+                    }
+                    if (j > 0 && matLaberinto[i][j - 1] == 1) {
+                        matLaberinto[i][j] = 2;
+                    }
+                }
+            }
+        }
+        matLaberinto[4][4] = 2;
+    }
 
     public void buscarCamino() {
-        int i = 0, j = 0, k = 0;
+        int i = 0, j = 0;
         String camino = "";
-        while (i != 4 || j != 4) {
-            camino += "(" + i + ", " + j + ")";
-            matLaberinto[i][j] = 2;
-            if (i < 4 && matLaberinto[i + 1][j] == 1) {
-                i++;
-                continue;
+        if (matLaberinto[i][j] == 2 && matLaberinto[4][4] == 2) {
+            while (i != 4 || j != 4) {
+                camino += "(" + i + ", " + j + ") ";
+                matLaberinto[i][j] = 3; // Marcar la casilla actual
+
+                if (i < 4 && matLaberinto[i + 1][j] == 2) {
+                    i++;
+                    continue;
+                }
+                if (j < 4 && matLaberinto[i][j + 1] == 2) {
+                    j++;
+                    continue;
+                }
+                if (i > 0 && matLaberinto[i - 1][j] == 2) {
+                    i--;
+                    continue;
+                }
+                if (j > 0 && matLaberinto[i][j - 1] == 2) {
+                    j--;
+                    continue;
+                }
             }
-            if (j < 4 && matLaberinto[i][j + 1] == 1) {
-                j++;
-                continue;
-            }
-            if (i > 0 && matLaberinto[i - 1][j] == 1) {
-                i--;
-                continue;
-            }
-            if (j > 0 && matLaberinto[i][j - 1] == 1) {
-                j--;
-                continue;
-            }
+            camino += "(4, 4)";
+            System.out.println("Camino 1: " + camino);
+        } else {
+            System.out.println("No hay camino.");
         }
-        camino += "(" + i + ", " + j + ")";
-        caminos[k] = camino;
-        k++;
-        i = 0;
-        j = 0;
-        camino = "";
-        while (i != 4 || j != 4) {
-            camino += "(" + i + ", " + j + ")";
-            matLaberinto[i][j] = 2; // Marcar la casilla como visitada
-            // Mover hacia la derecha si es posible
-            if (j < 4 && matLaberinto[i][j + 1] == 1) {
-                j++;
-                continue;
+    }
+
+    public void buscarCamino2() {
+        int i = 0, j = 0;
+        String camino = "";
+        if (matLaberinto[i][j] > 1 && matLaberinto[4][4] >1) {
+            while (i != 4 || j != 4) {
+                camino += "(" + i + ", " + j + ")";
+                matLaberinto[i][j] = 4; // Marcar la casilla actual
+                if (j < 4 && matLaberinto[i][j + 1] >1) {
+                    j++;
+                    continue;
+                }
+                if (i < 4 && matLaberinto[i + 1][j] >1) {
+                    i++;
+                    continue;
+                }
+                if (j > 0 && matLaberinto[i][j - 1] >1) {
+                    j--;
+                    continue;
+                }
+                if (i > 0 && matLaberinto[i - 1][j] >1) {
+                    i--;
+                    continue;
+                }
             }
-            // Mover hacia abajo si es posible
-            if (i < 4 && matLaberinto[i + 1][j] == 1) {
-                i++;
-                continue;
-            }
-            // Si no es posible avanzar, retroceder
-            if (i > 0 && matLaberinto[i - 1][j] == 1) {
-                i--;
-                continue;
-            }
-            if (j > 0 && matLaberinto[i][j - 1] == 1) {
-                j--;
-                continue;
-            }
+            camino += "(4, 4)";
+            System.out.println("Camino 2: " + camino);
+        } else {
+            System.out.println("No hay camino.");
         }
-        camino += "(" + i + ", " + j + ")";
-        caminos[k] = camino;
-        k++;
-        for (k = 0; k < 2; k++) {
-            System.out.println("Camino " + k + ": " + caminos[k]);
-        }
+
     }
 }

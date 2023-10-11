@@ -10,8 +10,10 @@ public class Main {
             System.out.println("Para ello deberá ingresar los datos del laberinto a continuación");
             fc.ingresarLabTec();
             fc.mostrarLab();
+            fc.marcarCamino();
             fc.buscarCamino();
-            fc.mostrarLab();
+            fc.marcarCamino();
+            fc.buscarCamino2();
             System.out.println("SI desea volver a jugar presione 1");
             volver=sc.nextInt();
         }
