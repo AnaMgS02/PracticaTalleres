@@ -1,11 +1,34 @@
 package Parcial1;
 
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.io.IOException;
 import java.util.Scanner;
 
 public class FuncionesLab {
     Scanner sc = new Scanner(System.in);
     int[][] matLaberinto = new int[5][5];
     String[] caminos = new String[2];
+
+    public void leerMatrizArchivo(String laberinto) {
+
+    try (BufferedReader br = new BufferedReader(new FileReader(laberinto))) {
+        String linea;
+        int i = 0;
+
+        while ((linea = br.readLine()) != null && i < 5) {
+            String[] elementos = linea.split(" "); // Suponiendo que los elementos estén separados por espacios
+
+            for (int j = 0; j < 5; j++) {
+                matLaberinto[i][j] = Integer.parseInt(elementos[j]);
+            }
+
+            i++;
+        }
+    } catch (IOException e) {
+        e.printStackTrace();
+    }
+}
 
     public void ingresarLabTec() {
         System.out.println("Ingresa los datos del laberinto fila por fila (0 ó 1)");
