@@ -7,6 +7,9 @@ print(texto) #Imprime una variable
 #Métodos de String: Una variable de tipo str puede ser un objeto que tiene métods o funciones
 print(texto.upper())#Mayusculas
 print(texto.lower())#Minúsculas
+print(texto.capitalize())#La primera palabra inicia en mayúscula
+print(texto.title())#Cada Palabra Inicia En Mayúscula
+print(texto.strip())#Elimina espacios antes y después de todo el texto
 print(texto.find("M"))#Buscar la posición de una letra o cadena de texto (5)
 print(texto.find("Mun"))#Imprimira (5) porque en 5 inicia la cadena
 print(texto.find("M"))#Buscar la posición de una letra o cadena de texto (5)
@@ -20,6 +23,24 @@ print(5*15)
 print(34/2)
 print(3**3)#Potencia
 print(20%4)#Modulo
+num=4
+num+=2
+num-=2
+num*=2
+num/=2
+print(round(1.358))#(1)
+print(round(2.874))#(2)
+print(abs(-36))#(36)
+print(abs(567))#(567)
+import math #Libreria de métodos matemáticos
+print(math.ceil(1.2))#Imprime el número superior entero más cercano(2)
+print(math.floor(2.899))#Imprime el número inferior entero más cercano(2)
+print(math.isn(32))
+#print(math.isnan("3")) error, sólo funciona con números
+print(math.pow(10,3))#potencia
+print(math.sqrt(9))#raiz cuadrada
+#TODAS las funciones de math se encuentran en pyton.org
+
 
 n1=19
 n2=23
@@ -53,6 +74,11 @@ elif punt>=50:
     print("Aprobado")
 else:
     print("Reprobado")
+
+#if ternario
+edad=15
+mensaje="Es mayor" if edad>17 else "Es menor"
+print(mensaje)
 
 #Listas
 lenguajes=["py", "ry", "php", "js","java"]
